@@ -2,11 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { normal, wide } from '../styles/Button.module.css';
 
-function Button({ name, isWide, color }) {
+function Button({ name, isWide, color, handleClick }) {
   return (
-    <div className={isWide ? wide : normal} style={{ backgroundColor: color }}>
+    <button
+      type="button"
+      className={isWide ? wide : normal}
+      style={{ backgroundColor: color }}
+      onClick={() => handleClick(name)}
+    >
       {name}
-    </div>
+    </button>
   );
 }
 
@@ -14,6 +19,7 @@ Button.propTypes = {
   name: PropTypes.string.isRequired,
   isWide: PropTypes.bool,
   color: PropTypes.string,
+  handleClick: PropTypes.func.isRequired,
 };
 
 Button.defaultProps = {
