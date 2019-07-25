@@ -4,37 +4,33 @@ import Button from './Button';
 import { group } from '../styles/ButtonPanel.module.css';
 
 function ButtonPanel({ handleClick }) {
+  const buttons = [
+    ['AC', '+/-', '%', '÷'],
+    ['7', '8', '9', '×'],
+    ['4', '5', '6', '-'],
+    ['1', '2', '3', '+'],
+    ['0', '.', '='],
+  ];
+
+  const getColor = btn => {
+    if (!['÷', '×', '-', '+', '='].includes(btn)) return 'lightgrey';
+  };
+
   return (
     <div className="button-panel">
-      <div className={group}>
-        <Button name="AC" color="lightgrey" handleClick={handleClick} />
-        <Button name="+/-" color="lightgrey" handleClick={handleClick} />
-        <Button name="%" color="lightgrey" handleClick={handleClick} />
-        <Button name="÷" handleClick={handleClick} />
-      </div>
-      <div className={group}>
-        <Button name="7" color="lightgrey" handleClick={handleClick} />
-        <Button name="8" color="lightgrey" handleClick={handleClick} />
-        <Button name="9" color="lightgrey" handleClick={handleClick} />
-        <Button name="×" handleClick={handleClick} />
-      </div>
-      <div className={group}>
-        <Button name="4" color="lightgrey" handleClick={handleClick} />
-        <Button name="5" color="lightgrey" handleClick={handleClick} />
-        <Button name="6" color="lightgrey" handleClick={handleClick} />
-        <Button name="-" handleClick={handleClick} />
-      </div>
-      <div className={group}>
-        <Button name="1" color="lightgrey" handleClick={handleClick} />
-        <Button name="2" color="lightgrey" handleClick={handleClick} />
-        <Button name="3" color="lightgrey" handleClick={handleClick} />
-        <Button name="+" handleClick={handleClick} />
-      </div>
-      <div className={group}>
-        <Button name="0" isWide color="lightgrey" handleClick={handleClick} />
-        <Button name="." color="lightgrey" handleClick={handleClick} />
-        <Button name="=" handleClick={handleClick} />
-      </div>
+      {buttons.map(row => (
+        <div className={group} key={row.toString()}>
+          {row.map(btn => (
+            <Button
+              name={btn}
+              key={btn}
+              color={getColor(btn)}
+              isWide={btn === '0'}
+              handleClick={handleClick}
+            />
+          ))}
+        </div>
+      ))}
     </div>
   );
 }

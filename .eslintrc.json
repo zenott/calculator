@@ -36,6 +36,7 @@
         "extensions": [".js", ".jsx"]
       }
     ],
-    "react/no-unused-state": 1
+    "react/no-unused-state": 1,
+    "consistent-return": 0
   }
 }
