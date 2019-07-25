@@ -23,19 +23,21 @@ export default function calculate(prevData, buttonName) {
       operation = null;
     } catch (err) {
       next = 'Error';
+      operation = null;
+      total = null;
     }
   }
 
-  if (buttonName === '.' && noError() && !maxChar()) {
-    if (next && !next.includes('.')) {
+  if (buttonName === '.' && !maxChar()) {
+    if (next && !next.includes('.') && noError()) {
       next += buttonName;
-    } else if (!next) {
+    } else if (!next || !noError()) {
       next = '0.';
     }
   }
 
-  if (numbers.includes(buttonName) && next !== '0' && noError() && !maxChar()) {
-    if (next) {
+  if (numbers.includes(buttonName) && next !== '0' && !maxChar()) {
+    if (next && noError()) {
       next += buttonName;
     } else {
       next = buttonName;
@@ -50,6 +52,8 @@ export default function calculate(prevData, buttonName) {
         operation = null;
       } catch (err) {
         next = 'Error';
+        operation = null;
+        total = null;
       }
     } else {
       total = next || total;

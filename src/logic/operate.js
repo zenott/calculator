@@ -1,4 +1,4 @@
-import Big from 'big-js';
+import Big from 'big.js';
 
 const opMap = {
   '+': 'plus',
@@ -8,6 +8,7 @@ const opMap = {
 };
 
 export default function operate(numberOne, numberTwo, operation) {
+  Big.PE = 15;
   const n1 = Big(numberOne);
   const n2 = Big(numberTwo);
 
