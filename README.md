@@ -1,3 +1,9 @@
+## React Calculator
+
+Simple calculator app built with React.
+
+[Live Demo](https://zenott.github.io/calculator/)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
